@@ -2,9 +2,7 @@ local crates = require("crates")
 return {
 	{
 		"saecki/crates.nvim",
-		event = "VeryLazy",
-		lazy = true,
-		ft = { "rust" },
+		event = { "BufRead Cargo.toml" },
     -- stylua: ignore
 		keys = {
 			{"<leader>Ct", crates.toggle,  desc = "Toggle Crates"},
@@ -29,6 +27,13 @@ return {
 			{"<leader>Cu", crates.update_crate, mode = {"n", "v"},  desc = "Update Crate"},
 			{"<leader>CU", crates.upgrade_crates, mode = {"n", "v"}, desc = "Upgrade Crates"},
 		},
-		opts = {},
+		opts = {
+			lsp = {
+				enabled = true,
+				actions = true,
+				completion = true,
+				hover = true,
+			},
+		},
 	},
 }
