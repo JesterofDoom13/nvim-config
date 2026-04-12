@@ -1,6 +1,6 @@
 return {
 	"Chaitanyabsprip/fastaction.nvim",
-	-- @type FastActionConfig
+	event = "LspAttach",
 	opts = {
 		dismiss_keys = { "j", "k", "<c-c>", "q" },
 		override_function = function(params) -- to retain built-in style keymaps
@@ -32,5 +32,8 @@ return {
 				{ pattern = "from module", key = "i", order = 1 },
 			},
 		},
+	},
+	keys = {
+		{ "<leader>ca", "<cmd>lua require('fastaction').code_action()<CR>", desc = "Fast Action" },
 	},
 }

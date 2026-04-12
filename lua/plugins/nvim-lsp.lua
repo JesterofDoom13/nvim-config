@@ -6,9 +6,7 @@ return {
 				harper_ls = {
 					filetypes = { "markdown" },
 					settings = {
-						["harper-ls"] = {
-							userDictPath = vim.fn.stdpath("config") .. "/spell/harper_dict.txt",
-						},
+						["harper-ls"] = { userDictPath = vim.fn.stdpath("config") .. "/spell/harper_dict.txt" },
 					},
 				},
 				nil_ls = { enabled = false },
@@ -16,9 +14,7 @@ return {
 					enabled = true,
 					settings = {
 						nixd = {
-							formatting = {
-								command = { "nixpkgs-fmt" },
-							},
+							formatting = { command = { "nixpkgs-fmt" } },
 							options = {
 								nixos = {
 									expr = "(builtins.getFlake (builtins.toString ./.)).nixosCinfigurations.steamdeck.options",
@@ -27,15 +23,14 @@ return {
 									expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.steamdeck.options.home-manager.users.type.getSubOptions []",
 								},
 							},
-							diagnostic = {
-								supress = {
-									"sema-extra-with",
-								},
-							},
+							diagnostic = { supress = { "sema-extra-with" } },
 						},
 					},
 				},
 			},
+		},
+		keys = {
+			{ "<leader>ca", false },
 		},
 	},
 }
