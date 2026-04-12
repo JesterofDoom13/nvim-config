@@ -51,3 +51,17 @@ require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", 
 	},
 	-- import/override with your plugins
 }, lazyOptions)
+local function reload_noctalia()
+	package.loaded["noctalia-colors"] = nil
+	local colors = require("noctalia-colors")
+
+	require("base16-colorscheme").setup(colors)
+	print("Noctalia colors reloaded!")
+end
+
+vim.api.nvim_create_autocmd("Signal", {
+	pattern = "SIGUSR1",
+	callback = reload_noctalia,
+})
+
+pcall(reload_noctalia)
