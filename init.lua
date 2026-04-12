@@ -60,12 +60,11 @@ local function reload_noctalia()
 		print("Noctalia file not found yet. Skipping...")
 		return
 	end
-	-- IF your noctalia-colors.lua returns a table of colors directly (e.g. return { base00 = ... })
+	-- Keeping options open to switch back and forth between a table
+	-- and a config
 	if type(noctalia) == "table" and noctalia.base00 then
 		require("base16-colorscheme").setup(noctalia)
 		print("Noctalia theme reloaded!")
-
-	-- IF your noctalia-colors.lua returns a module with a setup function (as discussed previously)
 	elseif type(noctalia) == "table" and noctalia.setup then
 		noctalia.setup()
 		print("Noctalia theme setup() called!")
