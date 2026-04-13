@@ -23,12 +23,45 @@ function M.setup()
 		base0E = "{{colors.tertiary_container.default.hex}}", -- Magenta/Tertiary Container
 		base0F = "{{colors.error_container.default.hex}}", -- Brown/Error Container
 	}
-
-	-- Apply the colors using a base16 plugin (like base16-nvim or mini.base16)
+	local lualinecolors = {
+		normal = {
+			a = { fg = "{{colors.on_primary.default.hex}}", bg = "{{colors.primary.default.hex}}", gui = "bold" },
+			b = { fg = "{{colors.on_surface.default.hex}}", bg = "{{colors.surface_variant.default.hex}}" },
+			c = { fg = "{{colors.outline.default.hex}}", bg = "{{colors.surface.default.hex}}" },
+		},
+		insert = {
+			a = { fg = "{{colors.on_tertiary.default.hex}}", bg = "{{colors.tertiary.default.hex}}", gui = "bold" },
+			b = { fg = "{{colors.on_surface.default.hex}}", bg = "{{colors.surface_variant.default.hex}}" },
+		},
+		visual = {
+			a = { fg = "{{colors.on_secondary.default.hex}}", bg = "{{colors.secondary.default.hex}}", gui = "bold" },
+			b = { fg = "{{colors.on_surface.default.hex}}", bg = "{{colors.surface_variant.default.hex}}" },
+		},
+		replace = {
+			a = { fg = "{{colors.on_error.default.hex}}", bg = "{{colors.error.default.hex}}", gui = "bold" },
+			b = { fg = "{{colors.on_surface.default.hex}}", bg = "{{colors.surface_variant.default.hex}}" },
+		},
+		command = {
+			a = {
+				fg = "{{colors.on_secondary_container.default.hex}}",
+				bg = "{{colors.secondary_container.default.hex}}",
+				gui = "bold",
+			},
+			b = { fg = "{{colors.on_surface.default.hex}}", bg = "{{colors.surface_variant.default.hex}}" },
+		},
+		inactive = {
+			a = { fg = "{{colors.outline.default.hex}}", bg = "{{colors.surface.default.hex}}" },
+			b = { fg = "{{colors.outline.default.hex}}", bg = "{{colors.surface.default.hex}}" },
+			c = { fg = "{{colors.outline_variant.default.hex}}", bg = "{{colors.surface.default.hex}}" },
+		},
+	}
+	-- ~/.config/fish/noctalia-colors.fish
+	--    Apply the colors using a base16 plugin (like base16-nvim or mini.base16)
 	-- Example with 'RRethy/base16-nvim':
 	local status, base16 = pcall(require, "base16-colorscheme")
 	if status then
 		base16.setup(colors)
+		require("lualine").setup(lualinecolors)
 	end
 end
 
