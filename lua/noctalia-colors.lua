@@ -2,26 +2,26 @@ local M = {}
 
 function M.setup()
 	local colors = {
-		base00 = "#121c2b", -- Default Background
-		base01 = "#1e2e48", -- Lighter Background
-		base02 = "#1b2a41", -- Selection Background
-		base03 = "#5f6874", -- Comments/Invisibles
+		base00 = "#291414", -- Default Background
+		base01 = "#452121", -- Lighter Background
+		base02 = "#3e1e1e", -- Selection Background
+		base03 = "#756161", -- Comments/Invisibles
 
 		-- Foreground tones
-		base04 = "#afb2b6", -- Dark Foreground
-		base05 = "#f2f2f3", -- Default Foreground
-		base06 = "#f2f2f3", -- Light Foreground
-		base07 = "#f2f2f3", -- Lightest Foreground
+		base04 = "#b6afaf", -- Dark Foreground
+		base05 = "#f3f2f2", -- Default Foreground
+		base06 = "#f3f2f2", -- Light Foreground
+		base07 = "#f3f2f2", -- Lightest Foreground
 
 		-- Accent colors
-		base08 = "#fd4663", -- Red (Error)
-		base09 = "#a466cc", -- Orange/Tertiary
-		base0A = "#6798e4", -- Yellow/Primary
-		base0B = "#695cd6", -- Green/Secondary
-		base0C = "#0c3e8d", -- Cyan/Primary Container
-		base0D = "#6798e4", -- Blue/Primary
-		base0E = "#491669", -- Magenta/Tertiary Container
-		base0F = "#900017", -- Brown/Error Container
+		base08 = "#c02a29", -- Red (Error)
+		base09 = "#dadb57", -- Orange/Tertiary
+		base0A = "#e46867", -- Yellow/Primary
+		base0B = "#db9a57", -- Green/Secondary
+		base0C = "#8d0d0c", -- Cyan/Primary Container
+		base0D = "#e46867", -- Blue/Primary
+		base0E = "#72730d", -- Magenta/Tertiary Container
+		base0F = "#450808", -- Brown/Error Container
 	}
 
 	-- Apply the colors using a base16 plugin (like base16-nvim or mini.base16)
