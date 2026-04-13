@@ -2,55 +2,55 @@ local M = {}
 
 function M.setup()
 	local colors = {
-		base00 = "#291914",
-		base01 = "#442a22",
-		base02 = "#3d261f",
-		base03 = "#74645f",
+		base00 = "#152428",
+		base01 = "#233d43",
+		base02 = "#1f373c",
+		base03 = "#5b6f6f",
 
-		base04 = "#b6b1af",
-		base05 = "#f3f2f2",
-		base06 = "#f3f2f2",
-		base07 = "#f3f2f2",
+		base04 = "#afb6b6",
+		base05 = "#f2f3f3",
+		base06 = "#f2f3f3",
+		base07 = "#f2f3f3",
 
 		base08 = "#fd4663",
-		base09 = "#b2cc66",
-		base0A = "#e48767",
-		base0B = "#d6b85c",
-		base0C = "#8d2d0c",
-		base0D = "#e48767",
-		base0E = "#546916",
+		base09 = "#6966cc",
+		base0A = "#67e0e4",
+		base0B = "#5c95d6",
+		base0C = "#0c898d",
+		base0D = "#67e0e4",
+		base0E = "#191669",
 		base0F = "#900017",
 	}
 	local lualinecolors = {
 		normal = {
-			a = { fg = "#181210", bg = "#e48767", gui = "bold" },
-			b = { fg = "#f3f2f2", bg = "#36221b" },
-			c = { fg = "#74645f", bg = "#291914" },
+			a = { fg = "#182425", bg = "#67e0e4", gui = "bold" },
+			b = { fg = "#f2f3f3", bg = "#1c3136" },
+			c = { fg = "#5b6f6f", bg = "#152428" },
 		},
 		insert = {
-			a = { fg = "#251c18", bg = "#b2cc66", gui = "bold" },
-			b = { fg = "#f3f2f2", bg = "#36221b" },
+			a = { fg = "#182425", bg = "#6966cc", gui = "bold" },
+			b = { fg = "#f2f3f3", bg = "#1c3136" },
 		},
 		visual = {
-			a = { fg = "#251c18", bg = "#d6b85c", gui = "bold" },
-			b = { fg = "#f3f2f2", bg = "#36221b" },
+			a = { fg = "#182425", bg = "#5c95d6", gui = "bold" },
+			b = { fg = "#f2f3f3", bg = "#1c3136" },
 		},
 		replace = {
-			a = { fg = "#251c18", bg = "#fd4663", gui = "bold" },
-			b = { fg = "#f3f2f2", bg = "#36221b" },
+			a = { fg = "#182425", bg = "#fd4663", gui = "bold" },
+			b = { fg = "#f2f3f3", bg = "#1c3136" },
 		},
 		command = {
 			a = {
-				fg = "#eeeadd",
-				bg = "#6f5810",
+				fg = "#dde5ee",
+				bg = "#103d6f",
 				gui = "bold",
 			},
-			b = { fg = "#f3f2f2", bg = "#36221b" },
+			b = { fg = "#f2f3f3", bg = "#1c3136" },
 		},
 		inactive = {
-			a = { fg = "#74645f", bg = "#291914" },
-			b = { fg = "#74645f", bg = "#291914" },
-			c = { fg = "#74645f", bg = "#291914" },
+			a = { fg = "#5b6f6f", bg = "#152428" },
+			b = { fg = "#5b6f6f", bg = "#152428" },
+			c = { fg = "#5c7070", bg = "#152428" },
 		},
 	}
 	local status, base16 = pcall(require, "base16-colorscheme")
