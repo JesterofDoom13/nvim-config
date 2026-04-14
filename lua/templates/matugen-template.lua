@@ -37,7 +37,7 @@ signal:start(
 			transparent.clear()
 		end
 		local ok_lualine, lualine = pcall(require, "lualine")
-		if ok_lualine then
+		if ok_lualine and package.loaded["lualine"] then
 			lualine.setup({ options = { theme = "auto" } })
 		end
 	end)
