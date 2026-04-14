@@ -27,12 +27,12 @@ return {
 			require("base16-colorscheme").setup(colors)
 		end,
 	},
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "base16-colorscheme",
-		},
-	},
+	-- {
+	-- 	"LazyVim/LazyVim",
+	-- 	opts = {
+	-- 		colorscheme = "base16-colorscheme",
+	-- 	},
+	-- },
 	{
 		"tribela/transparent.nvim",
 		event = "VimEnter",

@@ -1,48 +1,34 @@
-local colors = {
-	base00 = "#FFFFFF", -- Background
-	base01 = "#FFFFFF", -- Lighter Background
-	base02 = "#FFFFFF", -- Selection Background
-	base03 = "#FFFFFF", -- Comments
-	base04 = "#FFFFFF", -- Dark Foreground
-	base05 = "#FFFFFF", -- Default Foreground
-	base06 = "#FFFFFF", -- Light Foreground
-	base07 = "#FFFFFF", -- Light Background
-	base08 = "#FFFFFF", -- Red
-	base09 = "#FFFFFF", -- Orange
-	base0A = "#FFFFFF", -- Yellow
-	base0B = "#FFFFFF", -- Green
-	base0C = "#FFFFFF", -- Cyan
-	base0D = "#FFFFFF", -- Blue
-	base0E = "#FFFFFF", -- Magenta
-	base0F = "#FFFFFF", -- Brown
-}
-return {
-	{
-		"RRethy/base16-nvim",
-		lazy = false,
-		priority = 1000, -- Load early to prevent flash of unstyled text
-		config = function()
-			require("base16-colorscheme").setup(colors)
-		end,
-	},
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "base16-colorscheme",
-		},
-	},
-	{
-		"tribela/transparent.nvim",
-		event = "VimEnter",
-    -- stylua: ignore
-		keys = {
-			{
-			  "<leader>ut",
-			  function() require("transparent").toggle() end,
-			  desc = "Toggle transparency",
-			  -- cond = return require("transparent").state.
-			},
-		},
-		opts = {},
-	},
-}
+local M = {}
+
+function M.setup()
+	require("base16-colorscheme").setup({
+		base00 = "#0a1e33",
+		base01 = "#113355",
+		base02 = "#0f2e4c",
+		base03 = "#5f6974",
+		base04 = "#afb2b6",
+		base05 = "#f2f2f3",
+		base06 = "#f2f2f3",
+		base07 = "#f2f2f3",
+		base08 = "#b82628",
+		base09 = "#9955dd",
+		base0A = "#5555dd",
+		base0B = "#67a6e4",
+		base0C = "#bf95ea",
+		base0D = "#93c0ec",
+		base0E = "#9595ea",
+		base0F = "#450708",
+	})
+end
+
+-- Hot-reload on SIGUSR1
+local signal = vim.uv.new_signal()
+signal:start(
+	"sigusr1",
+	vim.schedule_wrap(function()
+		package.loaded["matugen"] = nil
+		require("matugen").setup()
+	end)
+)
+
+return M
