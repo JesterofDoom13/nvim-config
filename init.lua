@@ -18,7 +18,7 @@ local lazyOptions = {
 	lockfile = getlockfilepath(),
 }
 
-require("mutagent").setup()
+require("matugen").setup()
 -- -- Noctalia loading based on new wallpaper
 -- local function reload_noctalia()
 -- 	package.loaded["noctalia-colors"] = nil

@@ -26,8 +26,16 @@ local signal = vim.uv.new_signal()
 signal:start(
 	"sigusr1",
 	vim.schedule_wrap(function()
-		package.loaded["matugen"] = nil
-		require("matugen").setup()
+		package.loaded["mutagen"] = nil
+		require("mutagen").setup()
+		vim.cmd("colorscheme base16-custom")
+		vim.api.nvim_exec_autocmds("ColorScheme", { modeline = false })
+
+		-- Re-apply transparency if it was enabled
+		local ok, transparent = pcall(require, "transparent")
+		if ok and transparent.get_status() then
+			transparent.clear()
+		end
 	end)
 )
 
