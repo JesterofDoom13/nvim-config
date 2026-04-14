@@ -18,6 +18,35 @@ local lazyOptions = {
 	lockfile = getlockfilepath(),
 }
 
+-- -- Noctalia loading based on new wallpaper
+-- local function reload_noctalia()
+-- 	package.loaded["noctalia-colors"] = nil
+-- 	local status, noctalia = pcall(require, "noctalia-colors")
+-- 	if not status then
+-- 		print("Noctalia file not found yet. Skipping...")
+-- 		return
+-- 	end
+-- 	-- Keeping options open to switch back and forth between a table
+-- 	-- and a config
+-- 	if type(noctalia) == "table" and noctalia.base00 then
+-- 		require("base16-colorscheme").setup(noctalia)
+-- 		print("Noctalia theme reloaded!")
+-- 	elseif type(noctalia) == "table" and noctalia.setup then
+-- 		noctalia.setup()
+-- 		print("Noctalia theme setup() called!")
+-- 	else
+-- 		print("Error: Invalid noctalia-colors format.")
+-- 	end
+-- end
+-- -- Listen for the signal
+-- vim.api.nvim_create_autocmd("Signal", {
+-- 	pattern = "SIGUSR1",
+-- 	callback = function()
+-- 		vim.schedule(reload_noctalia)
+-- 	end,
+-- })
+-- vim.schedule(reload_noctalia)
+
 -- NOTE: this the lazy wrapper. Use it like require('lazy').setup() but with an extra
 -- argument, the path to lazy.nvim as downloaded by nix, or nil, before the normal arguments.
 require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", "lazy.nvim" }), {
@@ -52,31 +81,46 @@ require("nixCatsUtils.lazyCat").setup(nixCats.pawsible({ "allPlugins", "start", 
 	-- import/override with your plugins
 }, lazyOptions)
 
--- Noctalia loading based on new wallpaper
-local function reload_noctalia()
-	package.loaded["noctalia-colors"] = nil
-	local status, noctalia = pcall(require, "noctalia-colors")
-	if not status then
-		print("Noctalia file not found yet. Skipping...")
-		return
-	end
-	-- Keeping options open to switch back and forth between a table
-	-- and a config
-	if type(noctalia) == "table" and noctalia.base00 then
-		require("base16-colorscheme").setup(noctalia)
-		print("Noctalia theme reloaded!")
-	elseif type(noctalia) == "table" and noctalia.setup then
-		noctalia.setup()
-		print("Noctalia theme setup() called!")
-	else
-		print("Error: Invalid noctalia-colors format.")
-	end
-end
--- Listen for the signal
-vim.api.nvim_create_autocmd("Signal", {
-	pattern = "SIGUSR1",
-	callback = function()
-		vim.schedule(reload_noctalia)
+-- LSP Config for neovim 12.1.
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		local map = function(keys, func, desc)
+			vim.keymap.set("n", keys, func, { buffer = ev.buf, desc = "LSP: " .. desc })
+		end
+		map("cd", vim.lsp.buf.definition, "Go to Definition")
+		map("cD", vim.lsp.buf.declaration, "Go to Declaration")
+		map("cr", vim.lsp.buf.references, "Go to References")
+		map("K", vim.lsp.buf.hover, "Hover Docs")
+		map("<leader>cr", vim.lsp.buf.rename, "Rename")
+		map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
 	end,
 })
-vim.schedule(reload_noctalia)
+
+vim.lsp.config("harper_ls", {
+	filetypes = { "markdown" },
+	settings = {
+		["harper-ls"] = {
+			userDictPath = vim.fn.stdpath("config") .. "/spell/harper_dict.txt",
+		},
+	},
+})
+
+vim.lsp.config("nixd", {
+	filetypes = { "nix" },
+	settings = {
+		nixd = {
+			formatting = { command = { "nixpkgs-fmt" } },
+			options = {
+				nixos = {
+					expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.steamdeck.options",
+				},
+				home_manager = {
+					expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.steamdeck.options.home-manager.users.type.getSubOptions []",
+				},
+			},
+			diagnostic = { suppress = { "sema-extra-with" } },
+		},
+	},
+})
+
+vim.lsp.enable({ "harper_ls", "nixd" })

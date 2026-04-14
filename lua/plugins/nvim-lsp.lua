@@ -1,6 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
+		-- enabled = false,
 		opts = {
 			setup = {
 				servers = {
@@ -30,9 +31,6 @@ return {
 					},
 				},
 			},
-		},
-		keys = {
-			{ "<leader>ca", false },
 		},
 	},
 }
