@@ -26,15 +26,19 @@ local signal = vim.uv.new_signal()
 signal:start(
 	"sigusr1",
 	vim.schedule_wrap(function()
-		package.loaded["mutagen"] = nil
-		require("mutagen").setup()
-		vim.cmd("colorscheme base16-custom")
+		package.loaded["matugen"] = nil
+		require("matugen").setup()
+		-- vim.cmd("colorscheme base16-colorscheme")
 		vim.api.nvim_exec_autocmds("ColorScheme", { modeline = false })
 
 		-- Re-apply transparency if it was enabled
 		local ok, transparent = pcall(require, "transparent")
-		if ok and transparent.get_status() then
+		if ok and transparent.config and transparent.config.enable then
 			transparent.clear()
+		end
+		local ok_lualine, lualine = pcall(require, "lualine")
+		if ok_lualine then
+			lualine.setup({ options = { theme = "auto" } })
 		end
 	end)
 )

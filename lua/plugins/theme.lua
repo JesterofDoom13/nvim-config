@@ -21,4 +21,15 @@ return {
 		},
 		opts = {},
 	},
+	{ "folke/tokyonight.nvim", enabled = false },
+
+	-- Tell LazyVim to use your colorscheme
+	{
+		"LazyVim/LazyVim",
+		opts = {
+			colorscheme = function()
+				require("matugen").setup()
+			end,
+		},
+	},
 }
