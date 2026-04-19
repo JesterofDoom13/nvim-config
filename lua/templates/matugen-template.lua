@@ -35,6 +35,7 @@ signal:start(
 		local ok, transparent = pcall(require, "transparent")
 		if ok and transparent.config and transparent.config.enable then
 			transparent.clear()
+			transparent.setup()
 		end
 		local ok_lualine, lualine = pcall(require, "lualine")
 		if ok_lualine and package.loaded["lualine"] then
