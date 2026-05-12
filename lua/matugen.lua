@@ -17,7 +17,7 @@ function M.setup()
 		base0C = "#bfc4eb",
 		base0D = "#56d6f5",
 		base0E = "#b2cbd3",
-		base0F = "#93000a",
+		base0F = "#899295",
 	})
 end
 

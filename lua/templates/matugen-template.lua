@@ -17,7 +17,7 @@ function M.setup()
 		base0C = "{{colors.tertiary_fixed_dim.default.hex}}",
 		base0D = "{{colors.primary_fixed_dim.default.hex}}",
 		base0E = "{{colors.secondary_fixed_dim.default.hex}}",
-		base0F = "{{colors.error_container.default.hex}}",
+		base0F = "{{colors.outline.default.hex}}",
 	})
 end
 
