@@ -58,17 +58,17 @@ return {
 					-- My additions.
 					"nerdfont",
 					"emoji",
-					"kanban",
+					-- "kanban",
 					"lazydev",
 					"omni",
 				},
 				providers = {
-					kanban = {
-						name = "kanban",
-						module = "kanban.fn.cmp.blink.cmp",
-						score_offset = -10, -- optional: bump priorityb
-						opts = {}, -- reserved for future options
-					},
+					-- kanban = {
+					-- 	name = "kanban",
+					-- 	module = "kanban.fn.cmp.blink.cmp",
+					-- 	score_offset = -10, -- optional: bump priorityb
+					-- 	opts = {}, -- reserved for future options
+					-- },
 					emoji = {
 						module = "blink-emoji",
 						name = "Emoji",
