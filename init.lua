@@ -125,3 +125,6 @@ vim.lsp.config("nixd", {
 })
 
 vim.lsp.enable({ "harper_ls", "nixd" })
+
+local ok, matugen = pcall(require, 'matugen')
+if ok then matugen.setup() end
