@@ -3,21 +3,21 @@ local M = {}
 function M.setup()
 	require("base16-colorscheme").setup({
 		base00 = "#000000",
-		base01 = "#251810",
-		base02 = "#1f130c",
-		base03 = "#73675e",
-		base04 = "#b6b2af",
+		base01 = "#2c120d",
+		base02 = "#250e0a",
+		base03 = "#756360",
+		base04 = "#b6b0af",
 		base05 = "#f3f2f2",
 		base06 = "#f3f2f2",
 		base07 = "#f3f2f2",
 		base08 = "#fd4663",
-		base09 = "#66cc8c",
-		base0A = "#d6c75c",
-		base0B = "#e49667",
-		base0C = "#96e9b5",
-		base0D = "#ecb493",
-		base0E = "#e9de96",
-		base0F = "#73675e",
+		base09 = "#bbcc66",
+		base0A = "#d6ad5c",
+		base0B = "#e47c67",
+		base0C = "#dbe996",
+		base0D = "#eca293",
+		base0E = "#e9cd96",
+		base0F = "#756360",
 	})
 end
 
