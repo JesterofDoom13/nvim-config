@@ -37,6 +37,7 @@ signal:start(
 			transparent.clear()
 			transparent.setup()
 		end
+		-- Reset lualine to display the new colors
 		local ok_lualine, lualine = pcall(require, "lualine")
 		if ok_lualine and package.loaded["lualine"] then
 			lualine.setup({ options = { theme = "auto" } })
