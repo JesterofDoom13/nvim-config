@@ -3,8 +3,8 @@ local M = {}
 function M.setup()
 	require("base16-colorscheme").setup({
 		base00 = "#000000",
-		base01 = "#2e0f10",
-		base02 = "#280c0c",
+		base01 = "#200809",
+		base02 = "#2e0f10",
 		base03 = "#716261",
 		base04 = "#b6afaf",
 		base05 = "#f3f2f2",
